@@ -16,7 +16,7 @@
             </a>
             <div class="collapse" id="ui-masdata">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/">Daftar Buku</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/content/tabel-nama.php">Daftar Buku</a></li>
                 <li class="nav-item"> <a class="nav-link" href="pages/">Peminjaman</a></li>
               </ul>
             </div>
