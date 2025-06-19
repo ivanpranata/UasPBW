@@ -20,7 +20,7 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="images/gambar.png" />
 </head>
 
 <body>
@@ -31,7 +31,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="images/logo.svg" alt="logo">
+                <img src="images/gambar.png" alt="logo">
               </div>
               <h4>Hello! Selamat Datang di Menpus</h4>
               <h6 class="fw-light">Login dulu bos.</h6>
@@ -57,9 +57,6 @@
                   <a href="https://www.youtube.com/watch?v=n-Qndvt_gJY" class="auth-link text-black">Forgot password?</a>
                 </div>
 
-                <div class="text-center mt-4 fw-light">
-                  Don't have an account? <a href="register.html" class="text-primary">Create</a>
-                </div>
               </form>
 
 

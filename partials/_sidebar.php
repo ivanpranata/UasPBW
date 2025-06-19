@@ -22,11 +22,10 @@
               </ul>
             </div>
           </li>
-          <!-- Laporan -->
-
+     
           <!-- Logout -->
           <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="logout.php">
               <i class="mdi mdi-power menu-icon"></i>
               <span class="menu-title">Logout</span>
             </a>
