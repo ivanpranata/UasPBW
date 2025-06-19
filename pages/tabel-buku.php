@@ -1,6 +1,7 @@
 <?php
-require '../../config/koneksi.php';
+require __DIR__ . '/../config/koneksi.php';
 ?>
+
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Data Buku</h4>
@@ -8,8 +9,12 @@ require '../../config/koneksi.php';
             <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>pbud</th>
-             
+                    <th>No.</th>
+                    <th>Judul Buku</th>
+                    <th>Nama Pengarang</th>
+                    <th>Tahun Terbit</th>
+                    <th>Loker Buku</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +25,10 @@ require '../../config/koneksi.php';
                     while ($data = mysqli_fetch_array($query)) {
                         echo '<tr>';
                         echo '<td>' . $no++ . '</td>';
+                        echo '<td>' . $data['judul_buku'] . '</td>';
                         echo '<td>' . $data['nama_pengarang'] . '</td>';
+                        echo '<td>' . $data['tahun_terbit'] . '</td>';
+                        echo '<td>' . $data['loker_buku'] . '</td>';
                         echo '<td>' . $data['status'] . '</td>';
                         echo '</tr>';
                     }

@@ -53,7 +53,7 @@
         <!-- content -->
         <div class="content-wrapper">
           <?php
-            include 'pages/content/tabel-buku.php';
+            include 'pages/tabel-buku.php';
           ?>
         </div>
         <!-- partial:partials/_footer.php -->

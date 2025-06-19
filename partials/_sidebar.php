@@ -2,7 +2,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="/UasPBW/index.php">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -16,16 +16,16 @@
             </a>
             <div class="collapse" id="ui-masdata">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/content/tabel-nama.php">Daftar Buku</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/content/tabel-nama.php">Daftar Pengunjung</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/">Peminjaman</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/UasPBW/pages/tabel-buku.php">Daftar Buku</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/UasPBW/pages/tabel-pengunjung.php">Daftar Pengunjung</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/UasPBW/pages/tabel-peminjaman.php">Peminjaman</a></li>
               </ul>
             </div>
           </li>
      
           <!-- Logout -->
           <li class="nav-item">
-            <a class="nav-link" href="logout.php">
+            <a class="nav-link" href="/UasPBW/logout.php">
               <i class="mdi mdi-power menu-icon"></i>
               <span class="menu-title">Logout</span>
             </a>
