@@ -6,19 +6,22 @@
        }
    ?>
 
-
-
-
 <?php
 require __DIR__ . '/../config/koneksi.php';
 $id = $_GET['id'] ?? null;
-$data = $koneksi->query("SELECT * FROM pengunjung WHERE id = '$id'")->fetch_assoc();
-if (!$data) exit("Data tidak ditemukan.");
+$data = $koneksi->query("SELECT * FROM buku WHERE id = '$id'")->fetch_assoc();
+if (!$data) {
+  echo "<script>alert('Data tidak ditemukan');location.href='tabel-buku.php';</script>";
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">
-<head><meta charset="UTF-8"><title>Detail Pengunjung</title>
-<link rel="stylesheet" href="../vendors/feather/feather.css">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Buku</title>
+  <s/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../vendors/feather/feather.css">
   <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="../vendors/typicons/typicons.css">
@@ -38,11 +41,14 @@ if (!$data) exit("Data tidak ditemukan.");
     <div class="content-wrapper">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Detail Pengunjung</h4>
-          <p><strong>Nama:</strong> <?= htmlspecialchars($data['nama']) ?></p>
-          <p><strong>NIM:</strong> <?= $data['nim'] ?></p>
-          <p><strong>Usia:</strong> <?= $data['usia'] ?></p>
-          <a href="tabel-pengunjung.php" class="btn btn-secondary mt-3">Kembali</a>
+          <h4 class="card-title">Detail Buku</h4>
+          <p><strong>Judul:</strong> <?= htmlspecialchars($data['judul_buku']) ?></p>
+          <p><strong>Pengarang:</strong> <?= htmlspecialchars($data['nama_pengarang']) ?></p>
+          <p><strong>Tahun Terbit:</strong> <?= $data['tahun_terbit'] ?></p>
+          <p><strong>Loker:</strong> <?= htmlspecialchars($data['loker_buku']) ?></p>
+          <p><strong>Status:</strong> <?= $data['status'] ?></p>
+          <p><strong>Keterangan:</strong> <?= htmlspecialchars($data['keterangan']) ?></p>
+          <a href="tabel-buku.php" class="btn btn-secondary mt-3">Kembali</a>
         </div>
       </div>
     </div>
@@ -54,6 +60,5 @@ if (!$data) exit("Data tidak ditemukan.");
 <script src="../js/hoverable-collapse.js"></script>
 <script src="../js/template.js"></script>
 <script src="../js/settings.js"></script>
-
 </body>
 </html>

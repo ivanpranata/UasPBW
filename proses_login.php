@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    } else {
 
 
-     header("Location: login.php?message=" . urlencode("password salah broo..."));
+     header("Location: /UasPBW/login.php?message=" . urlencode("password salah "));
    }
 
 

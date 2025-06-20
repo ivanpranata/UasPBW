@@ -34,7 +34,7 @@
                 <img src="images/gambar.png" alt="logo">
               </div>
               <h4>Hello! Selamat Datang di Menpus</h4>
-              <h6 class="fw-light">Login dulu bos.</h6>
+              <h6 class="fw-light">Silahkan login terlebih dahulu.</h6>
               <form method="post" action="proses_login.php" class="pt-3">
 
                 <div class="form-group">
@@ -53,10 +53,7 @@
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">
                   
-                  </div>
-                  <a href="https://www.youtube.com/watch?v=n-Qndvt_gJY" class="auth-link text-black">Forgot password?</a>
-                </div>
-
+              
               </form>
 
 

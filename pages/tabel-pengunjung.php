@@ -1,4 +1,12 @@
 <?php
+       session_start();
+       if (!isset($_SESSION['login_Un51k4'])) {
+            header("Location: login.php?message=" . urlencode("harus login sebagai admin dulu."));
+           exit;
+       }
+   ?>
+
+<?php
 require __DIR__ . '/../config/koneksi.php';
 ?>
 <!DOCTYPE html>
@@ -6,9 +14,16 @@ require __DIR__ . '/../config/koneksi.php';
 <head>
   <meta charset="utf-8">
   <title>Daftar Pengunjung</title>
+  <link rel="stylesheet" href="../vendors/feather/feather.css">
   <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../vendors/typicons/typicons.css">
+  <link rel="stylesheet" href="../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="../js/select.dataTables.min.css">
   <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
+  <link rel="shortcut icon" href="../images/gambar.png" />
 </head>
 <body>
 <?php include __DIR__ . '/../partials/_navbar.php'; ?>
@@ -67,7 +82,7 @@ require __DIR__ . '/../config/koneksi.php';
         <div class="card-body">
           <h4 class="card-title">Daftar Pengunjung</h4>
           <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-strip">
               <thead>
                 <tr>
                   <th>#</th>

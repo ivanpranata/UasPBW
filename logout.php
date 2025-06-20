@@ -1,6 +1,6 @@
 <?php
 session_start();
 session_destroy();
-header("Location: index.php"); // arahkan ke halaman login setelah logout
+header("Location: /UasPBW/index.php"); // arahkan ke halaman login setelah logout
 exit();
 ?>

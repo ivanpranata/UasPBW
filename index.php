@@ -1,7 +1,7 @@
 <?php
        session_start();
        if (!isset($_SESSION['login_Un51k4'])) {
-            header("Location: login.php?message=" . urlencode("Mengakses fitur harus login dulu bro."));
+            header("Location: login.php?message=" . urlencode("harus login sebagai admin dulu."));
            exit;
        }
    ?>
@@ -53,7 +53,7 @@
         <!-- content -->
         <div class="content-wrapper">
           <?php
-            include 'pages/tabel-buku.php';
+            include 'pages/main-buku.php';
           ?>
         </div>
         <!-- partial:partials/_footer.php -->

@@ -7,45 +7,36 @@
    ?>
 
 
-
 <?php
 require __DIR__ . '/../config/koneksi.php';
 $id = $_GET['id'] ?? null;
-
-if (!$id) {
-  echo "ID tidak ditemukan.";
-  exit;
-}
-
-$data = $koneksi->query("SELECT * FROM peminjaman WHERE id = '$id'")->fetch_assoc();
-
+$data = $koneksi->query("SELECT * FROM buku WHERE id = '$id'")->fetch_assoc();
 if (!$data) {
-  echo "Data tidak ditemukan.";
+  echo "<script>alert('Data tidak ditemukan');location.href='tabel-buku.php';</script>";
   exit;
 }
 
 if (isset($_POST['update'])) {
-  $judul_buku = $_POST['judul_buku'];
-  $peminjam = $_POST['peminjam'];
-  $tgl_pinjam = $_POST['tgl_pinjam'];
-  $tgl_kembali = $_POST['tgl_kembali'];
-  $lama_pinjam = $_POST['lama_pinjam'];
+  $judul = $_POST['judul_buku'];
+  $pengarang = $_POST['nama_pengarang'];
+  $tahun = $_POST['tahun_terbit'];
+  $loker = $_POST['loker_buku'];
+  $status = $_POST['status'];
   $keterangan = $_POST['keterangan'];
 
-  $update = $koneksi->query("UPDATE peminjaman SET 
-    judul_buku = '$judul_buku',
-    peminjam = '$peminjam',
-    tgl_pinjam = '$tgl_pinjam',
-    tgl_kembali = '$tgl_kembali',
-    lama_pinjam = $lama_pinjam,
-    keterangan = '$keterangan'
-    WHERE id = '$id'
-  ");
+  $update = $koneksi->query("UPDATE buku SET 
+    judul_buku='$judul',
+    nama_pengarang='$pengarang',
+    tahun_terbit='$tahun',
+    loker_buku='$loker',
+    status='$status',
+    keterangan='$keterangan'
+    WHERE id='$id'");
 
   if ($update) {
-    echo "<script>alert('Data berhasil diupdate');location.href='tabel-peminjaman.php';</script>";
+    echo "<script>alert('Data berhasil diperbarui');location.href='tabel-buku.php';</script>";
   } else {
-    echo "<div class='alert alert-danger'>Gagal update data: " . $koneksi->error . "</div>";
+    echo "<div class='alert alert-danger'>Gagal update: {$koneksi->error}</div>";
   }
 }
 ?>
@@ -53,7 +44,7 @@ if (isset($_POST['update'])) {
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Edit Peminjaman</title>
+  <title>Edit Buku</title>
   <link rel="stylesheet" href="../vendors/feather/feather.css">
   <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
@@ -74,34 +65,37 @@ if (isset($_POST['update'])) {
     <div class="content-wrapper">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Edit Peminjaman</h4>
+          <h4 class="card-title">Edit Buku</h4>
           <form method="POST">
             <div class="form-group">
               <label>Judul Buku</label>
-              <input type="text" name="judul_buku" value="<?= htmlspecialchars($data['judul_buku']) ?>" class="form-control" required>
+              <input type="text" name="judul_buku" class="form-control" value="<?= htmlspecialchars($data['judul_buku']) ?>" required>
             </div>
             <div class="form-group">
-              <label>Nama Peminjam</label>
-              <input type="text" name="peminjam" value="<?= htmlspecialchars($data['peminjam']) ?>" class="form-control" required>
+              <label>Nama Pengarang</label>
+              <input type="text" name="nama_pengarang" class="form-control" value="<?= htmlspecialchars($data['nama_pengarang']) ?>" required>
             </div>
             <div class="form-group">
-              <label>Tanggal Pinjam</label>
-              <input type="date" name="tgl_pinjam" value="<?= $data['tgl_pinjam'] ?>" class="form-control" required>
+              <label>Tahun Terbit</label>
+              <input type="date" name="tahun_terbit" class="form-control" value="<?= $data['tahun_terbit'] ?>" required>
             </div>
             <div class="form-group">
-              <label>Tanggal Kembali</label>
-              <input type="date" name="tgl_kembali" value="<?= $data['tgl_kembali'] ?>" class="form-control" required>
+              <label>Loker Buku</label>
+              <input type="text" name="loker_buku" class="form-control" value="<?= htmlspecialchars($data['loker_buku']) ?>" required>
             </div>
             <div class="form-group">
-              <label>Lama Pinjam (hari)</label>
-              <input type="number" name="lama_pinjam" value="<?= $data['lama_pinjam'] ?>" class="form-control" required>
+              <label>Status</label>
+              <select name="status" class="form-control">
+                <option value="Ada" <?= $data['status'] == 'Ada' ? 'selected' : '' ?>>Ada</option>
+                <option value="Dipinjam" <?= $data['status'] == 'Dipinjam' ? 'selected' : '' ?>>Dipinjam</option>
+              </select>
             </div>
             <div class="form-group">
               <label>Keterangan</label>
-              <input type="text" name="keterangan" value="<?= htmlspecialchars($data['keterangan']) ?>" class="form-control">
+              <input type="text" name="keterangan" class="form-control" value="<?= htmlspecialchars($data['keterangan']) ?>">
             </div>
             <button type="submit" name="update" class="btn btn-primary">Simpan Perubahan</button>
-            <a href="tabel-peminjaman.php" class="btn btn-secondary">Batal</a>
+            <a href="tabel-buku.php" class="btn btn-secondary">Batal</a>
           </form>
         </div>
       </div>
@@ -109,8 +103,6 @@ if (isset($_POST['update'])) {
     <?php include __DIR__ . '/../partials/_footer.php'; ?>
   </div>
 </div>
-
-
 <script src="../vendors/js/vendor.bundle.base.js"></script>
 <script src="../js/off-canvas.js"></script>
 <script src="../js/hoverable-collapse.js"></script>

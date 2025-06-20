@@ -1,4 +1,13 @@
 <?php
+       session_start();
+       if (!isset($_SESSION['login_Un51k4'])) {
+            header("Location: login.php?message=" . urlencode("harus login sebagai admin dulu."));
+           exit;
+       }
+   ?>
+
+
+<?php
 require __DIR__ . '/../config/koneksi.php';
 $id = $_GET['id'] ?? null;
 $data = $koneksi->query("SELECT * FROM pengunjung WHERE id = '$id'")->fetch_assoc();
@@ -18,7 +27,18 @@ if (isset($_POST['update'])) {
 ?>
 <!DOCTYPE html>
 <html lang="id">
-<head><meta charset="UTF-8"><title>Edit Pengunjung</title><link rel="stylesheet" href="../css/vertical-layout-light/style.css"></head>
+<head><meta charset="UTF-8"><title>Edit Pengunjung</title>
+<link rel="stylesheet" href="../vendors/feather/feather.css">
+  <link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="../vendors/typicons/typicons.css">
+  <link rel="stylesheet" href="../vendors/simple-line-icons/css/simple-line-icons.css">
+  <link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="../js/select.dataTables.min.css">
+  <link rel="stylesheet" href="../css/vertical-layout-light/style.css">
+  <link rel="shortcut icon" href="../images/gambar.png" />
+</head>
 <body>
 <?php include __DIR__ . '/../partials/_navbar.php'; ?>
 <div class="container-fluid page-body-wrapper">

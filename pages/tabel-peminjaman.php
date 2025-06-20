@@ -1,4 +1,12 @@
 <?php
+       session_start();
+       if (!isset($_SESSION['login_Un51k4'])) {
+            header("Location: login.php?message=" . urlencode("harus login sebagai admin dulu."));
+           exit;
+       }
+   ?>
+
+<?php
 require __DIR__ . '/../config/koneksi.php';
 ?>
 <!DOCTYPE html>
@@ -102,7 +110,7 @@ require __DIR__ . '/../config/koneksi.php';
         <div class="card-body">
           <h4 class="card-title">Daftar Peminjaman</h4>
           <div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-strip">
               <thead>
                 <tr>
                   <th>#</th>
